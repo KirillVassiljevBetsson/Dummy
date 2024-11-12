@@ -18,7 +18,7 @@ public class KafkaHostedService : IHostedService
     public async Task StartAsync(CancellationToken cancellationToken)
     {
         var example = new NotificationExample { BrandId = "AlohaShark" };
-        await _kafkaProducer.ProduceAsync(new EventEnvelope<NotificationExample>(example, new EventEnvelopeHeaders("NotificationExample", "Gpt-group", 1)), "gaming-gpt-events", cancellationToken);
+        await _kafkaProducer.ProduceAsync(new EventEnvelope<NotificationExample>(example, new EventEnvelopeHeaders("NotificationExample", "Gpt-group", 1, true)), "gaming-gpt-events", cancellationToken);
         _logger.LogInformation($"Published message to kafka");
     }
 
